@@ -12,18 +12,25 @@ public class Mavenproject3 {
         int n = input.nextInt();
         String[][] items = new String[n][3];
 
-//        Filling up the Array
+// Filling up the Array
         for (int i = 0; i < n; i++) {
-//                Storing name
-            System.out.println("\nEnter details for Item " + i + 1 + ":");
-            System.out.println("Name: ");
-            items[i][0] = input.next();
-//                Storing price
-            System.out.println("Price: ");
-            items[i][1] = input.next();
-//                Storing quantity
-            System.out.println("Quantity: ");
-            items[i][2] = input.next();
+            // Storing name  
+            System.out.println("\nEnter details for Item " + (i + 1) + ":");
+            System.out.print("Name: ");
+
+            if (i == 0) {
+                input.nextLine();
+            }
+
+            items[i][0] = input.nextLine();
+
+            // Storing price  
+            System.out.print("Price: ");
+            items[i][1] = input.nextLine();
+
+            // Storing quantity  
+            System.out.print("Quantity: ");
+            items[i][2] = input.nextLine();
         }
 
 //        Typecasting price and quantity
@@ -36,17 +43,17 @@ public class Mavenproject3 {
 
 //        Applying discount
         System.out.println("\nAre you from Bahria University? (yes/no): ");
-        String isFromBahria = input.next().toLowerCase();
+        String isFromBahria = input.next();
 
         double discount = 0;
-        if (isFromBahria == "yes") {
+
+        if (isFromBahria.equalsIgnoreCase("yes")) {
             discount = 0.30;
         } else if (totalPrice >= 50000 && totalPrice <= 100000) {
             discount = 0.20;
         } else if (totalPrice > 100000) {
             discount = 0.30;
         }
-
 //        Calculating final amount
         double discountedAmount = totalPrice * discount;
         double finalAmount = totalPrice - discountedAmount;
